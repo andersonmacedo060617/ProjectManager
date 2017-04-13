@@ -6,11 +6,13 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NHibernate;
 using NHibernate.Cfg.MappingSchema;
 using NHibernate.Mapping.ByCode;
 using System.Web;
 using NHibernate.Context;
+using System.Reflection;
+using ProjetoTeste.NH.Model;
+using ProjetoTeste.NH.Repository;
 
 namespace ProjetoTeste.NH.Config
 {
@@ -22,6 +24,25 @@ namespace ProjetoTeste.NH.Config
         private ISessionFactory SessionFactory;
 
         private static ConfigDB _instance = null;
+
+        #region Repository
+        public AndamentoRepository AndamentoRepository { get; set; }
+        public AtividadeRepository AtividadeRepository { get; set; }
+        public ClienteRepository ClienteRepository { get; set; }
+        public DocumentoRepository DocumentoRepository { get; set; }
+        public DocumentoAndamentoRepository DocumentoAndamentoRepository { get; set; }
+        public FuncaoRepository FuncaoRepository { get; set; }
+        public ItemProjetoRepository ItemProjetoRepository { get; set; }
+        public PacoteItensRepository PacoteItensRepository { get; set; }
+        public PacoteItensProjetoRepository PacoteItensProjetoRepository { get; set; }
+        public ProjetoRepository ProjetoRepository { get; set; }
+        public ResponsaveisProjetoRepository ResponsaveisProjetoRepository { get; set; }
+        public TipoAtividadeRepository TipoAtividadeRepository { get; set; }
+        public UsuarioRepository UsuarioRepository { get; set; }
+        #endregion
+
+
+        #region Config
         public static ConfigDB Instance
         {
             get
@@ -34,6 +55,7 @@ namespace ProjetoTeste.NH.Config
                 return _instance;
             }
         }
+        #endregion
 
         #region Mapeamento
         private HbmMapping Mapeamento()
@@ -41,6 +63,46 @@ namespace ProjetoTeste.NH.Config
             try
             {
                 var mapper = new ModelMapper();
+
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(AndamentoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(AtividadeMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(ClienteMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(DocumentoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(DocumentoAndamentoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(FuncaoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(ItemProjetoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(PacoteItensMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(PacoteItensProjetoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(Projeto)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(ResponsaveisProjetoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(TipoAtividade)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(UsuarioMap)).GetTypes()
+                );
 
                 return mapper.CompileMappingForAllExplicitlyAddedEntities();
             }
@@ -50,11 +112,7 @@ namespace ProjetoTeste.NH.Config
             }
         }
         #endregion
-
-        #region Repository
-
-        #endregion
-
+        
         #region Conexao
         private bool Conexao()
         {

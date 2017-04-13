@@ -24,7 +24,7 @@ namespace ProjetoTeste.NH.Model
 
         public virtual IList<PacoteItensProjeto> PacotesProjeto { get; set; } 
 
-        public virtual IList<ItemServico> ItensAdicionaisProjeto { get; set; }
+        public virtual IList<ItemProjeto> ItensAdicionaisProjeto { get; set; }
 
         public virtual IList<Documento> Documentos { get; set; }
 
@@ -72,7 +72,7 @@ namespace ProjetoTeste.NH.Model
                 r => r.OneToMany()
             );
 
-            Bag<ItemServico>(x => x.ItensAdicionaisProjeto, m =>
+            Bag<ItemProjeto>(x => x.ItensAdicionaisProjeto, m =>
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(CollectionLazy.Lazy);

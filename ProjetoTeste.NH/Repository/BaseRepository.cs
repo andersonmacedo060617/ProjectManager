@@ -11,6 +11,11 @@ namespace ProjetoTeste.NH.Repository
     {
         private ISession session;
 
+        public BaseRepository(ISession session)
+        {
+            this.session = session;
+        }
+
         public IList<T> GetAll()
         {
             var registros = this.session.CreateCriteria<T>().List<T>();
@@ -35,7 +40,7 @@ namespace ProjetoTeste.NH.Repository
             }
         }
 
-        public bool Excluir(T regsitro)
+        public bool Excluir(T registro)
         {
             try
             {

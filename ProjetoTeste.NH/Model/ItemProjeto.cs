@@ -3,7 +3,7 @@ using NHibernate.Mapping.ByCode.Conformist;
 
 namespace ProjetoTeste.NH.Model
 {
-    public class ItemServico
+    public class ItemProjeto
     {
         public virtual int Id { get; set; }
 
@@ -12,11 +12,11 @@ namespace ProjetoTeste.NH.Model
         public virtual string Descricao { get; set; }
     }
 
-    public class ItemServicoMap : ClassMapping<ItemServico>
+    public class ItemProjetoMap : ClassMapping<ItemProjeto>
     {
-        public ItemServicoMap()
+        public ItemProjetoMap()
         {
-            Table("ItemServico");
+            Table("ItemProjeto");
 
             Id<int>(x => x.Id, m =>
             {

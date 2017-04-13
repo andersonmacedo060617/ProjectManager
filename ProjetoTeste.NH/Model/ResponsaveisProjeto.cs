@@ -13,9 +13,9 @@ namespace ProjetoTeste.NH.Model
 
     }
 
-    public class ResponsaveisProjetoProjetoMap : ClassMapping<ResponsaveisProjeto>
+    public class ResponsaveisProjetoMap : ClassMapping<ResponsaveisProjeto>
     {
-        public ResponsaveisProjetoProjetoMap()
+        public ResponsaveisProjetoMap()
         {
             Table("ResponsaveisProjeto");
 

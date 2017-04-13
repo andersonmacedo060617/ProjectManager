@@ -12,7 +12,7 @@ namespace ProjetoTeste.NH.Model
 
         public virtual string Descricao { get; set; }
 
-        public virtual IList<ItemServico> Item { get; set; }
+        public virtual IList<ItemProjeto> Item { get; set; }
 
         public virtual bool Ativo { get; set; }
     }
@@ -32,7 +32,7 @@ namespace ProjetoTeste.NH.Model
             Property<string>(x => x.Descricao);
             Property<bool>(x => x.Ativo);
 
-            Bag<ItemServico>(x => x.Item, m =>
+            Bag<ItemProjeto>(x => x.Item, m =>
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(CollectionLazy.Lazy);
