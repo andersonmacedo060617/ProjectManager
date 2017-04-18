@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ConfigDB.cs" />
+    <Compile Include="Model\AcessoAcao.cs" />
     <Compile Include="Model\Andamento.cs" />
     <Compile Include="Model\Atividade.cs" />
     <Compile Include="Model\Cliente.cs" />
@@ -59,12 +60,17 @@
     <Compile Include="Model\ItemProjeto.cs" />
     <Compile Include="Model\PacoteItens.cs" />
     <Compile Include="Model\PacoteItensProjeto.cs" />
+    <Compile Include="Model\AcessoController.cs" />
+    <Compile Include="Model\AcessoUsuario.cs" />
     <Compile Include="Model\Projeto.cs" />
     <Compile Include="Model\ResponsaveisProjeto.cs" />
     <Compile Include="Model\Funcao.cs" />
     <Compile Include="Model\TipoAtividade.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AcessoAcaoRepository.cs" />
+    <Compile Include="Repository\AcessoControllerRepository.cs" />
+    <Compile Include="Repository\AcessoUsuarioRepository.cs" />
     <Compile Include="Repository\AndamentoRepository.cs" />
     <Compile Include="Repository\AtividadeRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

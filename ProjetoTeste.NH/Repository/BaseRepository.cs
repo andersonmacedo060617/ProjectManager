@@ -9,16 +9,22 @@ namespace ProjetoTeste.NH.Repository
 {
     public abstract class BaseRepository<T> where T: class
     {
-        private ISession session;
+        protected ISession session;
 
         public BaseRepository(ISession session)
         {
             this.session = session;
         }
 
-        public IList<T> GetAll()
+        public IList<T> BuscarTodos()
         {
             var registros = this.session.CreateCriteria<T>().List<T>();
+            return registros;
+        }
+
+        public T BuscarPorId(int Id)
+        {
+            var registros = this.session.Get<T>(Id);
             return registros;
         }
 

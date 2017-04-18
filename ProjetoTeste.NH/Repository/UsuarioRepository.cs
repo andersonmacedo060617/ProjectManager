@@ -10,8 +10,27 @@ namespace ProjetoTeste.NH.Repository
 {
     public class UsuarioRepository : BaseRepository<Usuario>
     {
+        
         public UsuarioRepository(ISession session) : base(session)
         {
         }
+
+        public Usuario BuscaPorLogin(string Login)
+        {
+            var usuario = this.BuscarTodos().Where(x=>x.Login == Login).FirstOrDefault();
+
+            return usuario;
+        }
+
+        public Usuario BuscaPorLoginSenha(string Login, string Senha)
+        {
+            var usuario = this.BuscarTodos().Where(
+                x => x.Login == Login && x.Senha == Senha
+                ).FirstOrDefault();
+
+            return usuario;
+        }
+
+
     }
 }

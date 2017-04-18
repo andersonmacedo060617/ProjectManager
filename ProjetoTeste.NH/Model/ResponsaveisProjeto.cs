@@ -11,6 +11,7 @@ namespace ProjetoTeste.NH.Model
 
         public virtual Funcao FormaParticipacao { get; set; }
 
+        public virtual string Observacao { get; set; }
     }
 
     public class ResponsaveisProjetoMap : ClassMapping<ResponsaveisProjeto>
@@ -24,6 +25,8 @@ namespace ProjetoTeste.NH.Model
                 m.Generator(Generators.Identity);
             });
 
+            Property<string>(x => x.Observacao);
+
             ManyToOne<Funcao>(x => x.FormaParticipacao, m =>
             {
                 m.Column("IdFuncao");
@@ -33,6 +36,8 @@ namespace ProjetoTeste.NH.Model
             {
                 m.Column("IdResponsavel");
             });
+
+
 
         }
     }

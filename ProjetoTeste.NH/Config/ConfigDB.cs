@@ -18,14 +18,18 @@ namespace ProjetoTeste.NH.Config
 {
     public class ConfigDB
     {
-        public static string StringConexao = "Persist Security Info=False;server=192.168.11.200;port=3306;" +
-        "database=GerenciadorLixoEletronico;uid=root;pwd=root";
+        public static string StringConexao =
+            "Persist Security Info=False;server=localhost;port=3306;" +
+            "database=ProjectManager;uid=root;pwd=plkadmin2002";
 
         private ISessionFactory SessionFactory;
 
         private static ConfigDB _instance = null;
 
         #region Repository
+        public AcessoAcaoRepository AcessoAcaoRepository { get; set; }
+        public AcessoControllerRepository AcessoControllerRepository { get; set; }
+        public AcessoUsuarioRepository AcessoUsuarioRepository { get; set; }
         public AndamentoRepository AndamentoRepository { get; set; }
         public AtividadeRepository AtividadeRepository { get; set; }
         public ClienteRepository ClienteRepository { get; set; }
@@ -57,6 +61,32 @@ namespace ProjetoTeste.NH.Config
         }
         #endregion
 
+        #region Construtor ConfigDB
+        public ConfigDB()
+        {
+            if (Conexao())
+            {
+                this.AcessoAcaoRepository = new AcessoAcaoRepository(this.Session);
+                this.AcessoControllerRepository = new AcessoControllerRepository(this.Session);
+                this.AcessoUsuarioRepository = new AcessoUsuarioRepository(this.Session);
+                this.AndamentoRepository = new AndamentoRepository(this.Session);
+                this.AtividadeRepository = new AtividadeRepository(this.Session);
+                this.ClienteRepository = new ClienteRepository(this.Session);
+                this.DocumentoAndamentoRepository = new DocumentoAndamentoRepository(this.Session);
+                this.DocumentoRepository = new DocumentoRepository(this.Session);
+                this.FuncaoRepository = new FuncaoRepository(this.Session);
+                this.ItemProjetoRepository = new ItemProjetoRepository(this.Session);
+                this.PacoteItensProjetoRepository = new PacoteItensProjetoRepository(this.Session);
+                this.PacoteItensRepository = new PacoteItensRepository(this.Session);
+                this.ProjetoRepository = new ProjetoRepository(this.Session);
+                this.ResponsaveisProjetoRepository = new ResponsaveisProjetoRepository(this.Session);
+                this.TipoAtividadeRepository = new TipoAtividadeRepository(this.Session);
+                this.UsuarioRepository = new UsuarioRepository(this.Session);
+            }
+        }
+        #endregion
+
+
         #region Mapeamento
         private HbmMapping Mapeamento()
         {
@@ -64,6 +94,15 @@ namespace ProjetoTeste.NH.Config
             {
                 var mapper = new ModelMapper();
 
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(AcessoAcaoMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(AcessoControllerMap)).GetTypes()
+                );
+                mapper.AddMappings(
+                    Assembly.GetAssembly(typeof(AcessoUsuarioMap)).GetTypes()
+                );
                 mapper.AddMappings(
                     Assembly.GetAssembly(typeof(AndamentoMap)).GetTypes()
                 );
@@ -103,7 +142,7 @@ namespace ProjetoTeste.NH.Config
                 mapper.AddMappings(
                     Assembly.GetAssembly(typeof(UsuarioMap)).GetTypes()
                 );
-
+                
                 return mapper.CompileMappingForAllExplicitlyAddedEntities();
             }
             catch

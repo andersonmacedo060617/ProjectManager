@@ -23,9 +23,16 @@ namespace ProjetoTeste.WebSite
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ScriptPages").Include(
+                      "~/Scripts/ScriptPages.js",
+                      "~/Scripts/metisMenu.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/metisMenu.css",
+                      "~/Content/StylePages.css",
+                      "~/Content/font-awesome.min.css"));
         }
     }
 }
