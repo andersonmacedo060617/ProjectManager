@@ -221,9 +221,6 @@
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <a href="@Url.Action("LogOut", "Usuario")"><i class="fa fa-sign-out fa-fw"></i> Log Out</a>
@@ -238,51 +235,42 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="@Url.Action("Principal","Home")"><i class="fa fa-dashboard fa-fw"></i> Indicadores</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="@Url.Action("Index", "Cliente")"><i class="fa fa-users"></i> Clientes</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Projeto")"><i class="fa fa-line-chart"></i> Projetos</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "PacoteProjeto")"><i class="fa fa-cubes"></i> Pacotes de Projetos</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "ItensProjeto")"><i class="fa fa-cog"></i> Serviços de Projetos</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Usuario")"><i class="fa fa-address-card"></i> Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Andamento")"><i class="fa fa-history"></i> Andamento(Hitorico)</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-table"></i> Tabelas do Sistema<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="@Url.Action("Index", "Atividade")">Atividades</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="@Url.Action("Index", "Funcao")">Funções</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="@Url.Action("Index", "Configuracoes")"><i class="fa fa-wrench"></i> Configurações do sistema</a>
                         </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
+                        
+                        @*<li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -323,7 +311,7 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

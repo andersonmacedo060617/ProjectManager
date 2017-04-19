@@ -21,18 +21,20 @@ namespace ProjetoTeste.NH.Config
         public static string StringConexao = ConnectionString();
 
         public ConnectionStringSettingsCollection Configuraços = ConfigurationManager.ConnectionStrings;
+        
+        private ISessionFactory SessionFactory;
 
+        private static ConfigDB _instance = null;
+
+        #region PegaStringDeConexao
         private static string ConnectionString()
         {
             ConnectionStringSettingsCollection Configuracoes = ConfigurationManager.ConnectionStrings;
             var strConn = Configuracoes["MyApp"].ConnectionString;
             return strConn;
         }
-
-        private ISessionFactory SessionFactory;
-
-        private static ConfigDB _instance = null;
-
+        #endregion
+        
         #region Repository
         public AcessoAcaoRepository AcessoAcaoRepository { get; set; }
         public AcessoControllerRepository AcessoControllerRepository { get; set; }
@@ -51,7 +53,6 @@ namespace ProjetoTeste.NH.Config
         public TipoAtividadeRepository TipoAtividadeRepository { get; set; }
         public UsuarioRepository UsuarioRepository { get; set; }
         #endregion
-
 
         #region Config
         public static ConfigDB Instance
@@ -92,7 +93,6 @@ namespace ProjetoTeste.NH.Config
             }
         }
         #endregion
-
 
         #region Mapeamento
         private HbmMapping Mapeamento()
@@ -232,8 +232,6 @@ namespace ProjetoTeste.NH.Config
             }
         }
         #endregion
-
-
 
     }
 }

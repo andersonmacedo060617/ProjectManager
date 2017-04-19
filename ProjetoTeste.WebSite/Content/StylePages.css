@@ -434,6 +434,5 @@ table.dataTable thead .sorting:after {
 }
 
  .navbar-top-links li a i{
-     color: white;
+     color: lightgray;
  }
-

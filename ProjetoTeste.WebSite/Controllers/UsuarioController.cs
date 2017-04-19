@@ -25,6 +25,7 @@ namespace ProjetoTeste.WebSite.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Administrador, Usuario")]
         public ActionResult LogOut()
         {
             UsuarioUtils.Deslogar();
