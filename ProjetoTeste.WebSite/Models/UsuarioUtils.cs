@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace ProjetoTeste.WebSite.RolesSecurity
+namespace ProjetoTeste.WebSite.Models
 {
     public class UsuarioUtils
     {

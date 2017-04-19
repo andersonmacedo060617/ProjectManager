@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ProjetoTeste.WebSite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,11 @@ namespace ProjetoTeste.WebSite.Controllers
     {
         public ActionResult Index()
         {
+            var usuario = UsuarioUtils.Usuario;
+            if (usuario != null) {
+                return RedirectToAction("Logar", "Usuario", usuario);
+            }
+
             return View();
         }
 

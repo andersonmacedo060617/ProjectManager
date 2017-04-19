@@ -85,11 +85,9 @@
     <Compile Include="Repository\ResponsaveisProjetoRepository.cs" />
     <Compile Include="Repository\TipoAtividadeRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\DBApp.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

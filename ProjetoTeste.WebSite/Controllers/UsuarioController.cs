@@ -1,5 +1,5 @@
 ﻿using ProjetoTeste.NH.Model;
-using ProjetoTeste.WebSite.RolesSecurity;
+using ProjetoTeste.WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +21,13 @@ namespace ProjetoTeste.WebSite.Controllers
                 }
             }
             TempData["MSG_FalhaAcesso"] = "Login ou senha invalidos!";
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult LogOut()
+        {
+            UsuarioUtils.Deslogar();
 
             return RedirectToAction("Index", "Home");
         }

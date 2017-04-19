@@ -18,9 +18,16 @@ namespace ProjetoTeste.NH.Config
 {
     public class ConfigDB
     {
-        public static string StringConexao =
-            "Persist Security Info=False;server=localhost;port=3306;" +
-            "database=ProjectManager;uid=root;pwd=plkadmin2002";
+        public static string StringConexao = ConnectionString();
+
+        public ConnectionStringSettingsCollection Configuraços = ConfigurationManager.ConnectionStrings;
+
+        private static string ConnectionString()
+        {
+            ConnectionStringSettingsCollection Configuracoes = ConfigurationManager.ConnectionStrings;
+            var strConn = Configuracoes["MyApp"].ConnectionString;
+            return strConn;
+        }
 
         private ISessionFactory SessionFactory;
 
