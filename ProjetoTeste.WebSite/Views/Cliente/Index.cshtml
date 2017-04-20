@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProjetoTeste.NH.Model.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSistema.cshtml";
+}
+<h2>Clientes</h2>
+
+<p>
+    <a href="@Url.Action("Novo")" class="btn btn-success"><i class="fa fa-plus"></i></a>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+
+        <a href="@Url.Action("Alterar", new { id = item.Id })" class="btn btn-lg btn-warning" >Alterar</a>
+
+        @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+        @*<td>
+            @Html.ActionLink("Alterar", "Alterar", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+    </tr>
+}
+
+</table>
