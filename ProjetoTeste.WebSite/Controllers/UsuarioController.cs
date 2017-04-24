@@ -11,8 +11,18 @@ namespace ProjetoTeste.WebSite.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
+        [HttpPost]
         public ActionResult Logar(Usuario usuario)
         {
+
+            if(UsuarioUtils.Usuario != null)
+            {
+                if (UsuarioUtils.Logar(usuario.Login, usuario.Senha))
+                {
+                    return RedirectToAction("Principal", "Home");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 if (UsuarioUtils.Logar(usuario.Login, usuario.Senha))

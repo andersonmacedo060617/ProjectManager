@@ -18,12 +18,14 @@ namespace ProjetoTeste.NH.Repository
 
         public IList<T> BuscarTodos()
         {
+            session.Clear();
             var registros = this.session.CreateCriteria<T>().List<T>();
             return registros;
         }
 
         public T BuscarPorId(int Id)
         {
+            session.Clear();
             var registros = this.session.Get<T>(Id);
             return registros;
         }

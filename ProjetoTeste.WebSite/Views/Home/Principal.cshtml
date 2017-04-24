@@ -4,5 +4,17 @@
     Layout = "~/Views/Shared/_LayoutSistema.cshtml";
 }
 
-<h2>Principal</h2>
+
+<ol class="breadcrumb">
+    <li class="active">
+        <i class="fa fa-dashboard"></i>  <a href="@Url.Action("Principal", "Home")">Painel de Indicadores</a>
+    </li>
+</ol>
+@if (TempData["MSG_FalhaExecucao"] != null)
+{
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @TempData["MSG_FalhaExecucao"].
+    </div>
+}
 

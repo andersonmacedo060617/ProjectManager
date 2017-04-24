@@ -16,10 +16,23 @@ namespace ProjetoTeste.WebSite.Controllers
         {
             var usuario = UsuarioUtils.Usuario;
             if (usuario != null) {
-                return RedirectToAction("Logar", "Usuario", usuario);
+                if (UsuarioUtils.Logar(usuario.Login, usuario.Senha))
+                {
+                    return RedirectToAction("Principal", "Home");
+                }
             }
 
             return View();
+        }
+
+        public ActionResult SemAcesso()
+        {
+            if(UsuarioUtils.Usuario != null)
+            {
+                TempData["MSG_FalhaExecucao"] = "Você não tem acesso a está opção";
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult About()
@@ -29,6 +42,7 @@ namespace ProjetoTeste.WebSite.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrador")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

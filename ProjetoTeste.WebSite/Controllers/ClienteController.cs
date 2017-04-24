@@ -19,7 +19,7 @@ namespace ProjetoTeste.WebSite.Controllers
             return View(clientes);
         }
 
-        [Authorize(Roles = "Usuario, Administrador")]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Novo()
         {
             Cliente cliente = new Cliente();
@@ -31,6 +31,35 @@ namespace ProjetoTeste.WebSite.Controllers
 
             return View(cliente);
         }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost]
+        public ActionResult Gravar(Cliente cliente)
+        {
+            if (!ModelState.IsValid)
+            {
+               
+                TempData["ClienteReturn"] = cliente;
+                return RedirectToAction("Novo", "Cliente");
+            }
+
+            ConfigDB.Instance.ClienteRepository.Gravar(cliente);
+
+            return RedirectToAction("Index", "Cliente");
+        }
+
+        [Authorize(Roles = "Administrador, Usuario")]
+        public ActionResult Exibir(int id)
+        {
+            var cliente = ConfigDB.Instance.ClienteRepository.BuscarPorId(id);
+            if(cliente == null)
+            {
+                return RedirectToAction("Index", "Cliente");
+            }
+
+            return View(cliente);
+        }
+
     }
-    
+
 }

@@ -17,6 +17,7 @@ namespace ProjetoTeste.NH.Repository
 
         public Usuario BuscaPorLogin(string Login)
         {
+            session.Clear();
             var usuario = this.BuscarTodos().Where(x=>x.Login == Login).FirstOrDefault();
 
             return usuario;
@@ -24,6 +25,7 @@ namespace ProjetoTeste.NH.Repository
 
         public Usuario BuscaPorLoginSenha(string Login, string Senha)
         {
+            session.Clear();
             var usuario = this.BuscarTodos().Where(
                 x => x.Login == Login && x.Senha == Senha
                 ).FirstOrDefault();

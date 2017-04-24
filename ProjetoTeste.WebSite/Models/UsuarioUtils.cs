@@ -41,7 +41,6 @@ namespace ProjetoTeste.WebSite.Models
 
             HttpContext.Current.Session["Usuario"] = null;
             HttpContext.Current.Session.Remove("Usuario");
-                        
             FormsAuthentication.SignOut();
         }
     }

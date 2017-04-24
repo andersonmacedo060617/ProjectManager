@@ -2,6 +2,7 @@
 using NHibernate.Mapping.ByCode.Conformist;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoTeste.NH.Model
 {
@@ -9,9 +10,24 @@ namespace ProjetoTeste.NH.Model
     {
         public virtual int Id { get; set; }
 
+        [Required(ErrorMessage = "A Descrição é Obrigatorio.")]
         public virtual string Nome { get; set; }
 
+
         public virtual IList<Projeto> Projetos { get; set; }
+        
+
+        public virtual int QuantidadeProjetos
+        {
+            get
+            {
+                if(this.Projetos != null)
+                {
+                    return this.Projetos.Count;
+                }
+                return 0;
+            }
+        }
     }
 
     public class ClienteMap : ClassMapping<Cliente>

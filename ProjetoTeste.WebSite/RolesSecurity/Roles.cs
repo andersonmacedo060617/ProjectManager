@@ -51,24 +51,28 @@ namespace ProjetoTeste.WebSite.RolesSecurity
         public override string[] GetRolesForUser(string userName)
         {
             List<string> sRoles = new List<string>();
-            var user = (Usuario)ConfigDB.Instance.UsuarioRepository.BuscaPorLogin(userName);
-
-            if (user.Admin)
-            {
-                sRoles.Add("Administrador");
-            }else
-            {
-                sRoles.Add("Usuario");
-            }
+            var user = ConfigDB.Instance.UsuarioRepository.BuscaPorLogin(userName);
+            var userSession = (Usuario)HttpContext.Current.Session["Usuario"];
+            if(userSession != null) { 
+                if (user.Login.Equals(userSession.Login) && userSession != null && user.Ativo)
+                {
+                    if (user.Admin)
+                    {
+                        sRoles.Add("Administrador");
+                    }else
+                    {
+                        sRoles.Add("Usuario");
+                    }
             
 
-            foreach (var perfil in user.PerfilAcesso)
-            {
-                sRoles.Add(perfil.AcessoController.Nome + ((perfil.AcessoAcao.Nome != null)?"_" + perfil.AcessoAcao.Nome : ""));
+                    foreach (var perfil in user.PerfilAcesso)
+                    {
+                        sRoles.Add(perfil.AcessoController.Nome + ((perfil.AcessoAcao.Nome != null)?"_" + perfil.AcessoAcao.Nome : ""));
+                    }
+                }
             }
-            
             string[] retorno = sRoles.ToArray();
-
+            
             return retorno;
 
             throw new NotImplementedException();

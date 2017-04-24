@@ -1,0 +1,50 @@
+﻿@model ProjetoTeste.NH.Model.Cliente
+
+@{
+    ViewBag.Title = "Exibir";
+    Layout = "~/Views/Shared/_LayoutSistema.cshtml";
+}
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i>  <a href="@Url.Action("Principal", "Home")"> Painel de Indicadores</a>
+        </li>
+        <li>
+            <i class="fa fa-users"></i> <a href="@Url.Action("Index", "Cliente")"> Clientes</a>
+        </li>
+        <li class="active">
+            <i class="fa fa-eye"></i> Visualizar Cliente <u>@Model.Nome</u>
+        </li>
+    </ol>
+</div>
+
+<div class="form-horizontal panel panel-default">
+    <div class="panel-heading">
+        Dados do cliente
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QuantidadeProjetos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuantidadeProjetos)
+            </dd>
+
+        </dl>
+
+        <p>
+            <a href="@Url.Action("Index", "Cliente")" class="btn btn-info" title="Voltar"><i class="fa fa-arrow-left"></i></a>
+            <a class="btn btn-warning" href="@Url.Action("Alterar", "Cliente", new { id = Model.Id })"><i class="fa fa-pencil"></i></a> 
+        </p>
+    </div>
+</div>

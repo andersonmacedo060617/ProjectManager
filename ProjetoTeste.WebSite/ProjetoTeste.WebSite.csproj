@@ -256,6 +256,7 @@
     <Content Include="Views\Home\Principal.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Novo.cshtml" />
+    <Content Include="Views\Cliente\Exibir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

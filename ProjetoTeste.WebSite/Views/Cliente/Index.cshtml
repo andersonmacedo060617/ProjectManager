@@ -4,38 +4,54 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutSistema.cshtml";
 }
-<h2>Clientes</h2>
+<div class="row">
+    <ol class="breadcrumb">
+        <li>
+            <i class="fa fa-dashboard"></i>  <a href="@Url.Action("Principal", "Home")">Painel de Indicadores</a>
+        </li>
+        <li class="active">
+            <i class="fa fa-users"></i> Clientes
+        </li>
+    </ol>
+</div>
 
-<p>
-    <a href="@Url.Action("Novo")" class="btn btn-success"><i class="fa fa-plus"></i></a>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th></th>
-    </tr>
+<div class="form-horizontal panel panel-default">
+    <div class="panel-heading">
+        Lista de Clientes
+    </div>
+        <div class="panel-body">
+        <p>
+            <a href="@Url.Action("Novo")" class="btn btn-success"><i class="fa fa-plus"></i></a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    Quantidade de Projetos
+                </th>
+                <th>Ação</th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantidadeProjetos)
+                    </td>
 
-        <a href="@Url.Action("Alterar", new { id = item.Id })" class="btn btn-lg btn-warning" >Alterar</a>
+                    <td>
+                        <a class="btn btn-info" href="@Url.Action("Exibir", "Cliente", new { id = item.Id })"><i class="fa fa-eye"></i></a>
+                        <a class="btn btn-warning" href="@Url.Action("Alterar", "Cliente", new { id = item.Id })"><i class="fa fa-pencil"></i></a> 
+                        <a class="btn btn-danger" href="@Url.Action("ConfirmaDelete", "Cliente", new { id = item.Id })"><i class="fa fa-trash"></i></a> 
+                    </td>
+                </tr>
+            }
 
-        @Html.ActionLink("Alterar", "Alterar", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-
-        @*<td>
-            @Html.ActionLink("Alterar", "Alterar", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>*@
-    </tr>
-}
-
-</table>
+        </table>
+    </div>
+</div>
