@@ -1,5 +1,7 @@
-﻿using NHibernate.Mapping.ByCode;
+﻿using NHibernate;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
+using ProjetoTeste.NH.Repository;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +15,7 @@ namespace ProjetoTeste.NH.Model
         [Required(ErrorMessage = "A Descrição é Obrigatorio.")]
         public virtual string Nome { get; set; }
 
+        public virtual int Idade { get; set; }
 
         public virtual IList<Projeto> Projetos { get; set; }
         
@@ -42,6 +45,7 @@ namespace ProjetoTeste.NH.Model
               });
 
             Property<string>(x => x.Nome);
+            Property<int>(x => x.Idade);
 
             Bag<Projeto>(x => x.Projetos, m =>
             {
@@ -53,4 +57,6 @@ namespace ProjetoTeste.NH.Model
             );
         }
     }
+    
+
 }

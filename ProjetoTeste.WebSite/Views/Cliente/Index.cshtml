@@ -45,9 +45,7 @@
                     </td>
 
                     <td>
-                        <a class="btn btn-info" href="@Url.Action("Exibir", "Cliente", new { id = item.Id })"><i class="fa fa-eye"></i></a>
-                        <a class="btn btn-warning" href="@Url.Action("Alterar", "Cliente", new { id = item.Id })"><i class="fa fa-pencil"></i></a> 
-                        <a class="btn btn-danger" href="@Url.Action("ConfirmaDelete", "Cliente", new { id = item.Id })"><i class="fa fa-trash"></i></a> 
+                        @Html.Action("BotoesAcaoIndex", "ComponentePage", new { Id = item.Id, NameController = "Cliente", Entidade = "Cliente" })
                     </td>
                 </tr>
             }
